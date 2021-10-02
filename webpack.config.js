@@ -1,6 +1,7 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     resolve: { 
@@ -30,6 +31,11 @@ module.exports = {
       new VueLoaderPlugin(),
       new HtmlPlugin({
         template: './src/index.html', //웹팩이 해석해야하는 html 파일이 어디있는지 명시함
+      }),
+      new CopyPlugin({
+        patterns: [
+          {from: 'static'}
+        ]
       })
     ]
   }
